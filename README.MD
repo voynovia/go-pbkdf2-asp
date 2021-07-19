@@ -21,19 +21,19 @@ go get github.com/voynovia/go-pbkdf2-asp
 package main
 
 import(
-	"fmt"
-	"crypto/sha1"
-	"github.com/voynovia/go-pbkdf2-asp"
+    "fmt"
+    "crypto/sha1"
+    "github.com/voynovia/go-pbkdf2-asp"
     "log"
 )
 
 func main(){
     pass := NewPassword(sha1.New, 128/8, 256/8, 1000)
-    cipherText, err := pass.HashPassword("lp-(1VWBkM$unx+")
+    cipherText, err := pass.HashPassword("123456")
     if err != nil {
       log.Fatal(err)
     }
-	fmt.Println(cipherText)
+    fmt.Println(cipherText)
 }
 ```
 
@@ -42,15 +42,15 @@ func main(){
 package main
 
 import(
-	"fmt"
-	"crypto/sha1"
+    "fmt"
+    "crypto/sha1"
     "github.com/voynovia/go-pbkdf2-asp"
-  "log"
+    "log"
 )
 
 func main(){
     pass := NewPassword(sha1.New, 128/8, 256/8, 1000)
-    isValid, err := pass.VerifyPassword("igor.voynov", "ANj+MKAbgzHJGdmuFiY1AvZRX2pNUBZtvHBJhcgDSdwHKyVyj3CSl0RQDO0ndZlcLw==")
+    isValid, err := pass.VerifyPassword("123456", "AOktxE08iNn/j6rpLBTw61FIQcNfQnYBwimZ/gtqHsWqhH2m0QMTa6FrqbC+OcWKEw==")
     if err != nil {
       log.Fatal(err)
     }
